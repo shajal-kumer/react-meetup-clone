@@ -40,7 +40,7 @@ export default function Banner() {
 				</Box>
 			</header>
 
-			<Container maxW="container.lg.xl">
+			<Container maxW="container.xl">
 				<Box d="flex" alignItems="center" py="20" flexDir="row">
 					<Box mr="6">
 						<Heading as="h1" size="2xl">
