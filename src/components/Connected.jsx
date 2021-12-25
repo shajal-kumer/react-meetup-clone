@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, Image, VStack } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Image } from "@chakra-ui/react";
 import adrioidApp from "../assets/android-app-download.svg";
 import leftPhone from "../assets/device-left.webp";
 import rightPhone from "../assets/device-right.webp";
@@ -7,12 +7,12 @@ import logo from "../assets/meetup-logo.svg";
 
 export default function Connected() {
 	return (
-		<Container maxW={"container.xl"} my="20">
-			<Flex justifyContent={"space-between"}>
-				<Box>
+		<Container maxW={"container.xl"} py="20">
+			<Flex justifyContent={{ md: "space-between", base: "center" }}>
+				<Box display={{ base: "none", md: "block" }}>
 					<Image src={leftPhone} />
 				</Box>
-				<VStack justifyContent={"center"} alignItems={"center"} spacing={"5"}>
+				<Flex justifyContent={"center"} alignItems={"center"} flexDir={"column"} gap={5}>
 					<Image src={logo} />
 					<Heading textAlign={"center"}>
 						Stay connected <br />
@@ -23,8 +23,8 @@ export default function Connected() {
 						<Image src={adrioidApp} />
 						<Image src={iosApp} />
 					</Flex>
-				</VStack>
-				<Box>
+				</Flex>
+				<Box display={{ base: "none", md: "block" }}>
 					<Image src={rightPhone} />
 				</Box>
 			</Flex>

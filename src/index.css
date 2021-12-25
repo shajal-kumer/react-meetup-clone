@@ -13,3 +13,9 @@ code {
 .chakra-badge.badge-last-item {
 	background-color: red;
 }
+.header {
+	background-image: url("./image/bg.svg");
+	background-repeat: no-repeat;
+	background-position: right -71px;
+	background-size: contain;
+}
