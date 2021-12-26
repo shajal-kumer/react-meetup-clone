@@ -18,8 +18,8 @@ const customTheme = extendTheme({
 		},
 	},
 	fonts: {
-		body: "Graphik Font",
-		heading: "Graphik Font",
+		body: "Poppins",
+		heading: "Roboto",
 	},
 	fontWeights: {
 		hairline: 100,

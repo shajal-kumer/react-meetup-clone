@@ -1,10 +1,30 @@
 import { Icon } from "@chakra-ui/icons";
-import { Box, Container, Flex, Grid, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { IoShareOutline } from "react-icons/io5";
+import Slider from "react-slick";
 import UpcommingFour from "../assets/upcomming-four.jpg";
 import Upcommingone from "../assets/upcomming-one.png";
 import Upcommingthree from "../assets/upcomming-three.jpg";
 import UpcommingTwo from "../assets/upcomming-two.jpg";
+
+function SampleNextArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div className={className} style={{ ...style }} onClick={onClick}>
+			<Icon as={GrFormNext} color="black" />
+		</div>
+	);
+}
+
+function SamplePrevArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div className={className} style={{ ...style }} onClick={onClick}>
+			<Icon as={GrFormPrevious} color="black" />
+		</div>
+	);
+}
 
 const events = [
 	{
@@ -59,9 +79,44 @@ const events = [
 			"https://www.dropbox.com/s/nd8z3hxuo3ahauk/segun_adebayo.jpg?dl=1",
 		],
 	},
+	{
+		id: 5,
+		image: Upcommingone,
+		time: "MON, JAN 3 @ 6:00 AM BST",
+		title: "New York & New Jersey Virtual Dating",
+		text: "New York & New Jersey",
+		numberOfAttendence: 134,
+		attendenceImages: [
+			"https://www.dropbox.com/s/nd8z3hxuo3ahauk/segun_adebayo.jpg?dl=1",
+			"https://www.dropbox.com/s/nd8z3hxuo3ahauk/segun_adebayo.jpg?dl=1",
+			"https://www.dropbox.com/s/nd8z3hxuo3ahauk/segun_adebayo.jpg?dl=1",
+		],
+	},
+	{
+		id: 6,
+		image: UpcommingTwo,
+		time: "MON, JAN 3 @ 6:00 AM BST",
+		title: "New Jersey Virtual Dating",
+		text: "New Jersey Matchmaking Dating",
+		numberOfAttendence: 56,
+		attendenceImages: [
+			"https://www.dropbox.com/s/nd8z3hxuo3ahauk/segun_adebayo.jpg?dl=1",
+			"https://www.dropbox.com/s/nd8z3hxuo3ahauk/segun_adebayo.jpg?dl=1",
+			"https://www.dropbox.com/s/nd8z3hxuo3ahauk/segun_adebayo.jpg?dl=1",
+		],
+	},
 ];
 
 export default function Upcomming() {
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 4,
+		slidesToScroll: 4,
+		nextArrow: <SampleNextArrow />,
+		prevArrow: <SamplePrevArrow />,
+	};
 	return (
 		<Container maxW="container.xl" py={10}>
 			<Flex justifyContent="space-between" alignItems="center" mb="8">
@@ -73,20 +128,12 @@ export default function Upcomming() {
 				</Link>
 			</Flex>
 
-			<Grid
-				templateColumns={{
-					sm: "repeat(2, 1fr)",
-					md: "repeat(2, 1fr)",
-					lg: "repeat(3, 1fr)",
-					xl: "repeat(4, 1fr)",
-					base: "repeat(1, 1fr)",
-				}}
-				gap={6}
-			>
+			<Slider {...settings}>
 				{events.map((event) => (
 					<Box key={event.id} width="100%" pos={"relative"} pb="35px">
 						<Box position="relative">
 							<Image borderRadius={"md"} position="relative" w="100%" src={event.image} alt="brand" />
+
 							<Box
 								position="absolute"
 								d="flex"
@@ -133,12 +180,12 @@ export default function Upcomming() {
 											border="1px"
 											borderColor="gray.200"
 											boxSize="35px"
-											mr="-8px"
+											mr="-15px"
 											src={img}
 										/>
 									))}
 
-									<Box as="span" ml="16px" color="#757575">
+									<Box as="span" ml="25px" color="#757575">
 										{event.numberOfAttendence}
 									</Box>
 								</Box>
@@ -149,7 +196,7 @@ export default function Upcomming() {
 						</Box>
 					</Box>
 				))}
-			</Grid>
+			</Slider>
 		</Container>
 	);
 }

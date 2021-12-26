@@ -1,6 +1,8 @@
-import { Box, Container, Divider, Flex, Grid, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/icons";
+import { Box, Container, Divider, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import Slider from "react-slick";
 import popularImage from "../assets/popular-image.jpg";
-
 const data = [
 	{
 		id: 1,
@@ -23,9 +25,57 @@ const data = [
 		date: "Sat, Aug 14 @ 9:45 PM NPT",
 		text: "English Communication",
 	},
+	{
+		id: 4,
+		image: popularImage,
+		title: "Online Improve",
+		date: "Sat, Aug 14 @ 9:45 PM NPT",
+		text: "English Communication",
+	},
+	{
+		id: 5,
+		image: popularImage,
+		title: "Leap - Conversations for Curious Minds",
+		date: "Sat, Aug 15 @ 9:45 PM NPT",
+		text: "English Communication",
+	},
+	{
+		id: 6,
+		image: popularImage,
+		title: "New York History and Culture - Experience NY and the World",
+		date: "Sat, Aug 14 @ 9:45 PM NPT",
+		text: "English Communication",
+	},
 ];
 
+function SampleNextArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div className={className} style={{ ...style }} onClick={onClick}>
+			<Icon as={GrFormNext} color="black" />
+		</div>
+	);
+}
+
+function SamplePrevArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div className={className} style={{ ...style }} onClick={onClick}>
+			<Icon as={GrFormPrevious} color="black" />
+		</div>
+	);
+}
+
 export default function Popular() {
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 3,
+		slidesToScroll: 3,
+		nextArrow: <SampleNextArrow />,
+		prevArrow: <SamplePrevArrow />,
+	};
 	return (
 		<Container maxW="container.xl" my="20">
 			<Flex justifyContent="space-between" alignItems="center" mb="8">
@@ -37,13 +87,13 @@ export default function Popular() {
 				</Link>
 			</Flex>
 
-			<Grid templateColumns={["repeat(1, 1fr)", null, "repeat(3, 1fr)", null, null, null]} gap={6}>
+			<Slider {...settings} className="popular-slider-grid">
 				{data.map((el) => (
 					<Box key={el.id} p="4" border="1px" borderColor="#ddd" borderRadius={"lg"}>
 						<Flex alignItems={"center"} gap={5} mb={4}>
 							<Image borderRadius={"lg"} src={popularImage} boxSize={"60px"} />
 
-							<Heading as="h3" fontSize={{ base: "22px", sm: "26px" }}>
+							<Heading as="h3" fontSize={"22px"}>
 								{el.title}
 							</Heading>
 						</Flex>
@@ -54,7 +104,7 @@ export default function Popular() {
 						<Text>{el.text}</Text>
 					</Box>
 				))}
-			</Grid>
+			</Slider>
 		</Container>
 	);
 }
