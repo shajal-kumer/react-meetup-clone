@@ -1,6 +1,6 @@
 # Meetup.com clone by using react and chakra-ui
 
-This repo is the part of my frot-end development journey. In this project i tried to figure out how to use chakra-ui.
+This repo is the part of my frot-end development journey. In this project, I have tried to figure out how to use chakra-UI.
 
 ## Demo
 
